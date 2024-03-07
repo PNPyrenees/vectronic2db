@@ -1,0 +1,6 @@
+__pycache__
+config/config.yml
+venv
+*.BAK
+*.log
+*.swp
