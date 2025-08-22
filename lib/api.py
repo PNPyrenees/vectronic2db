@@ -27,7 +27,7 @@ class Api:
             self.logger.logWarning(
                 code = "100",
                 message = "Erreur lors de la récupération des données associées au capteur " + deviceId,
-                exception = responses.json()
+                exception = "" #responses.json()
             )
             return None
             

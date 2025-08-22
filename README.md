@@ -60,8 +60,10 @@ mail:
     mailId: 
     mailPass: 
 log:
-    logFile: log/vectronic2db.logl
+    logFile: log/lotek2db.logl
 ```
+
+- Copier ensuite le fichier vectronic2db.sh.default en le renommant vectronic2db.sh. Editer le pour remplacer la valeur <PATH_TO_lotek2db> par le chemin absolu vers le dossier de vectronic2db
 
 # Automatisation
 Modifier le script vectronic2db.sh de sorte que le chemin vers le dossier du projet corresponde à votre environnement local (ligne 5)
@@ -77,19 +79,19 @@ Exemple d'une configuration cron pour la récupération toutes les heures des do
 ```
 Le chemin doit être en absolu.
 
-# Focus sur le Fix Status
+# Focus sur le idFixStatus
 
-La base de données recevant les données étant partagé avec d'autre constructeur de matériel, le code idFixStatus reçu est augmenté de 10
+La base de données recevant les données étant partagé avec d'autre constructeur de matériel, le code idFixStatus est augmenté de 10
 
-Table de correspondance du code fix status:
-| fix code  | value |
-| ------------ | ------------ |
-| 0 | No Fix |
-| 11 | GPS-1 Sat |
-| 12 | GPS-2 Sats |
-| 13 | GPS-2D |
-| 14 | 3D Fix with 4 Sats |
-| 15 | 3D validated - more than 4 Sats |
+| 6 | 3-D least-squares |
+| 7 | DR |
+
+**Exemple avec un RxStatut à 76 :**
+```
+- valeur binaire : 01001100
+- trois premieris bits : 100 corespondant à 4 en base10 (décimal) -> soit "4 or more SV KF"
+- les autres bits : 01001 correspondant à 9 en base 10 -> soit 9 satellites
+```
 
 #License
 ----
@@ -97,4 +99,4 @@ Table de correspondance du code fix status:
  
 [![N|Solid](http://www.pyrenees-parcnational.fr/sites/parc-pyrenees.com/files/logo_pnp.jpg)](http://www.pyrenees-parcnational.fr)
 
-   [LOTEK]: <https://www.vectronic-aerospace.com/>
+   [LOTEK]: <https://www.lotek.com/>

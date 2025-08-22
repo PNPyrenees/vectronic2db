@@ -34,7 +34,7 @@ class Logger:
     # Fonction se chargeant d'envoyer les logs par email
     def sendLogByMail(self):
         msg = EmailMessage()
-        msg['Subject']="[BDD-Bouquetin] - ERREUR integration"
+        msg['Subject']="[BDD-Bouquetin-Vectronic] - ERREUR integration "
         msg['From']="contact@parc-pyrenees.fr"
         msg['To']="ludovic.lepontois@pyrenees-parcnational.fr"
 

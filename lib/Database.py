@@ -57,7 +57,7 @@ class Database :
                 FROM 
                     bouquetin.v_animal_last_loc vall
                 WHERE
-                    vall.capt_constructeur = 'VecTronic'
+                    vall.capt_constructeur = 'VECTRONIC'
                     AND vall.capt_actif = true
                 """)
         except Exception as e:

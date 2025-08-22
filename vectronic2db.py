@@ -2,8 +2,8 @@ from lib.Database import Database
 from lib.api import Api
 
 # temporaire por test
-#from lib.logger import Logger
-#import json
+from lib.logger import Logger
+import json
 
 def main():
     """Fonction principale de mise à jour des données GPS"""
@@ -27,12 +27,12 @@ def main():
         
         responses = api.getlocalisation(deviceId, deviceKey, dtStart)
 
-        #logger = Logger()
+        logger = Logger()
 
         if responses is not None:
             # On boucle sur les localisations GPS
             for response in responses:
-                #logger.writeLog("999-1", json.dumps(response))
+                logger.writeLog("999-1", json.dumps(response))
                 
                 # On contrôle la date d'acuisition est postérieur à la dernière date renseignée en base 
                 if (response['acquisitionTime'] > dtStart):

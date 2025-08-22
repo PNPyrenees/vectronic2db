@@ -5,7 +5,7 @@ CREATE SCHEMA bouquetin;
 CREATE TABLE bouquetin.t_animal
 (
     ani_id serial NOT NULL,
-    ani_num_capture character varying(32)
+    ani_code character varying(32)
     ani_nom character varying(32),
     ani_sexe character(1),
     ani_annee_naissance integer,
@@ -17,8 +17,6 @@ CREATE TABLE bouquetin.t_animal
     ani_marquage_oreille_gauche character varying(32),
     ani_marquage_couleur_collier character varying(32),
     ani_marquage_code_collier character varying(32),
-    ani_genetique character varying(32),
-    ani_genotype character varying(32),
     ani_commentaire text,
     ani_date_saisie timestamp without time zone DEFAULT now(),
     ani_date_maj timestamp without time zone DEFAULT now(),
@@ -61,12 +59,6 @@ COMMENT ON COLUMN bouquetin.t_animal.ani_marquage_couleur_collier
 
 COMMENT ON COLUMN bouquetin.t_animal.ani_marquage_code_collier
     IS 'Lettres d’identification de l’animal inscrites sur le collier';
-
-COMMENT ON COLUMN bouquetin.t_animal.ani_genetique
-    IS 'Information génétique (ex : CP-PY-15-1633)';
-
-COMMENT ON COLUMN bouquetin.t_animal.ani_genotype
-    IS 'Information sur le génotype (ex : PP-15-1633)';
 
 COMMENT ON COLUMN bouquetin.t_animal.ani_commentaire
     IS 'Commentaire libre sur l’animal (ex : état lors du relâché, condition de mort …)';
@@ -294,7 +286,7 @@ CREATE VIEW bouquetin.v_animal_last_loc
  AS
  SELECT DISTINCT ON (ani.ani_id) loc.loc_id,
     ani.ani_id,
-    ani.ani_num_capture,
+    ani.ani_code,
     ani.ani_nom,
     ani.ani_pop_rattach,
     capt.capt_id,
@@ -322,7 +314,7 @@ CREATE OR REPLACE VIEW bouquetin.v_localisation
  AS
  SELECT loc.loc_id,
     ani.ani_id,
-    ani.ani_num_capture,
+    ani.ani_code,
     ani.ani_nom,
     ani.ani_pop_rattach,
     capt.capt_id,
